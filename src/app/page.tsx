@@ -1,61 +1,69 @@
-import StatsCard from "@/components/jobs/StatsCard";
-import VacancyChart from "@/components/jobs/VacancyChart";
-import JobApplicationTable from "@/components/jobs/JobApplicationTable";
-import RecommendedJobs from "@/components/jobs/RecommendedJobs";
-import { jobStats } from "@/data/jobs";
-import { ChevronDown } from "lucide-react";
+import ProfileCard from "@/components/home/ProfileCard";
+import AnalyticsCard from "@/components/home/AnalyticsCard";
+import SosmedStories from "@/components/home/SosmedStories";
+import CreatePost from "@/components/home/CreatePost";
+import PostCard from "@/components/home/PostCard";
+import AdBanner from "@/components/home/AdBanner";
+import SuggestionCard from "@/components/home/SuggestionCard";
 
-export default function JobDashboardPage() {
+const posts = [
+  {
+    id: "1",
+    author: "Pan Feng Shui",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100",
+    role: "Senior Graphic Designer",
+    date: "12 April at 09:28 PM",
+    content: "Had an amazing interaction with the founder of ABC Company, sharing my experience through this small article",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
+    likes: 3,
+    reactions: 8,
+    reposts: 2,
+    comments: 25,
+    shares: 231,
+    saved: 24,
+  },
+  {
+    id: "2",
+    author: "Clara Kim",
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=100",
+    role: "Software Engineer",
+    date: "12 April at 09:28 PM",
+    content: "A Great Way To Generate All The Motivation You Need To Get Fit.",
+    likes: 3,
+    reactions: 8,
+    reposts: 2,
+    comments: 25,
+    shares: 231,
+    saved: 24,
+  }
+];
+
+export default function HomeDashboardPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-4">
-      {/* page header with welcome message */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-        <div>
-          <h1 className="text-xl font-bold text-text-primary">
-            Welcome back, Julie 👋
-          </h1>
-          <p className="text-sm text-text-secondary">
-            Here&apos;s what you need to focus on today
-          </p>
-        </div>
+    <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8 py-6 bg-[#FBFCFE] min-h-screen">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 max-w-[1600px] mx-auto">
+        {/* Left Column (3 spans) */}
+        <aside className="lg:col-span-3 space-y-6">
+          <ProfileCard />
+          <AnalyticsCard />
+          <SosmedStories />
+        </aside>
 
-        {/* action buttons */}
-        <div className="flex items-center gap-3">
-          <button className="flex items-center gap-1 rounded-lg border border-gray-200 px-4 py-2 text-sm text-text-secondary hover:bg-gray-50 transition-colors">
-            Last 30 Days
-            <ChevronDown size={14} />
-          </button>
-          <button className="rounded-lg bg-primary px-5 py-2 text-sm font-medium text-white hover:bg-primary-dark transition-colors">
-            Search Job
-          </button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-        {/* main content area */}
-        <div className="lg:col-span-9">
-          {/* stats cards row */}
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-4">
-            {jobStats.map((stat) => (
-              <StatsCard key={stat.title} {...stat} />
+        {/* Middle Column (6 spans) */}
+        <main className="lg:col-span-6">
+          <CreatePost />
+          <div className="space-y-6">
+            {posts.map((post) => (
+              <PostCard key={post.id} post={post as any} />
             ))}
           </div>
+        </main>
 
-          {/* vacancy stats chart */}
-          <div className="mb-4">
-            <VacancyChart />
-          </div>
-
-          {/* job application status table */}
-          <JobApplicationTable />
-        </div>
-
-        {/* right sidebar with recommended jobs */}
-        <div className="lg:col-span-3">
-          <div className="sticky top-[72px]">
-            <RecommendedJobs />
-          </div>
-        </div>
+        {/* Right Column (3 spans) */}
+        <aside className="lg:col-span-3 space-y-6">
+          <AdBanner />
+          <SuggestionCard />
+        </aside>
       </div>
     </div>
   );
