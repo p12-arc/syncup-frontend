@@ -1,13 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* import inter font from google */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
+/* custom theme using tailwind v4 css variables */
+@theme {
+  --color-primary: #4A3AFF;
+  --color-primary-dark: #3A2AEF;
+  --color-primary-light: #6C5CFF;
+  --color-surface: #F5F5F9;
+  --color-card: #FFFFFF;
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+  --color-status-progress: #F59E0B;
+  --color-status-applied: #3B82F6;
+  --color-status-offered: #22C55E;
+  --color-status-rejected: #EF4444;
+  --color-chart-blue: #4A3AFF;
+  --color-chart-green: #22C55E;
+  --color-chart-red: #EF4444;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
 body {
-  font-family: "Inter", system-ui, sans-serif;
-  background-color: #f5f5f9;
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
 }
 
 /* custom scrollbar for a cleaner look */
