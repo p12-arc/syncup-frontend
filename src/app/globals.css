@@ -1,9 +1,6 @@
 @import "tailwindcss";
-
-/* import inter font from google */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-/* custom theme using tailwind v4 css variables */
 @theme {
   --color-primary: #4A3AFF;
   --color-primary-dark: #3A2AEF;
@@ -28,7 +25,6 @@ body {
   background-color: var(--color-surface);
 }
 
-/* custom scrollbar for a cleaner look */
 ::-webkit-scrollbar {
   width: 6px;
 }
